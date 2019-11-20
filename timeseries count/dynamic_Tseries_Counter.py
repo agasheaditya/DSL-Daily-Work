@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv("Tdata.csv")
+df = pd.read_excel("input.xlsx")
 print(df)
 series_obj = list(df.columns)
 print("Choose sequence From this :-    ",*series_obj[:-1])
@@ -18,8 +18,8 @@ table = pd.pivot_table(df,index=user_series_ip,values="Sales",aggfunc=np.sum)#,c
 
 df1 = pd.DataFrame(table)
 #print(df1)
-df1.to_csv("output.csv")
-df2 =  pd.read_csv("output.csv")
+df1.to_excel("output.xlsx")
+df2 =  pd.read_excel("output.xlsx")
 print(df2)
 
 count_TS = 0
@@ -30,4 +30,5 @@ for i in df2.columns:
 
 
 print("Total Timeseries = ",count_TS + 1 -(df2['Sales'].count()))
+
 
